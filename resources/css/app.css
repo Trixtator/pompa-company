@@ -1,0 +1,226 @@
+/* =========================================
+   1. BRANDING & DARK GREY THEME
+   ========================================= */
+:root {
+    --primary: #F37021;       /* Orange AKT */
+    --primary-dark: #d65a0f;
+    
+    /* PALET ABU-ABU GELAP (Serasi) */
+    --bg-main: #141414;       /* Body Utama (Sangat Gelap) */
+    --bg-surface: #1a1a1a;    /* Navbar & Footer (Sedikit Lebih Terang) */
+    --bg-card: #222222;       /* Kartu Konten */
+    --border-color: #333333;  /* Garis Pemisah Halus */
+    
+    --text-main: #f0f0f0;     /* Putih Hampir Murni */
+    --text-muted: #a0a0a0;    /* Abu-abu Teks */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+/* Helper Classes */
+.text-muted { color: var(--text-muted) !important; }
+.text-dark { color: var(--text-main) !important; } /* Override text-dark bootstrap */
+.bg-white, .bg-light { background-color: transparent !important; }
+
+/* =========================================
+   2. NAVBAR (SERASI DENGAN FOOTER)
+   ========================================= */
+.navbar {
+    background: var(--bg-surface); /* Warna sama dengan footer */
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color); /* Garis tipis bawah navbar */
+    transition: 0.4s ease-in-out;
+}
+
+.navbar-brand img {
+    height: 45px; width: auto; 
+    filter: brightness(0) invert(1); /* Logo Putih */
+}
+
+.nav-link {
+    color: #cccccc !important;
+    font-weight: 500; font-size: 0.9rem; text-transform: uppercase;
+    letter-spacing: 1px; margin-left: 25px; transition: 0.3s; position: relative;
+}
+
+.nav-link::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -5px; left: 0; background-color: var(--primary); transition: 0.3s;
+}
+
+.nav-link:hover, .nav-link.active { color: var(--primary) !important; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* =========================================
+   3. HERO SECTION (Dark Overlay)
+   ========================================= */
+.hero {
+    position: relative;
+    /* Overlay Abu Gelap agar teks terbaca */
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(30, 30, 30, 0.8) 100%), 
+                url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover; background-position: center;
+    height: 100vh; min-height: 750px;
+    display: flex; align-items: center; color: white;
+    padding-top: 80px; overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 4.5rem; line-height: 1.1; margin-bottom: 25px; font-weight: 900;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.text-gradient-orange {
+    background: linear-gradient(to right, var(--primary), #ffc107);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin-bottom: 45px; font-weight: 300; }
+
+.btn-gradient {
+    background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+    border: none; color: white; padding: 16px 45px;
+    font-weight: 700; letter-spacing: 1px; border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(243, 112, 33, 0.3); transition: 0.4s;
+}
+.btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(243, 112, 33, 0.5); }
+
+/* Shape Divider Abu Gelap (Menyatu dengan Body) */
+.hero-shape-divider {
+    position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 2;
+}
+.hero-shape-divider svg path { fill: var(--bg-main); } /* Warna body */
+
+/* =========================================
+   4. SECTIONS & CARDS (Grey Theme)
+   ========================================= */
+.section-padding { padding: 120px 0; }
+.section-subtitle {
+    color: var(--primary); font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px; display: block; font-size: 0.9rem;
+}
+.section-title { font-size: 3rem; font-weight: 800; color: white; line-height: 1.2; }
+
+/* Images */
+.about-image-wrapper { position: relative; padding: 20px; z-index: 1; }
+.about-img { border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.about-image-wrapper::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    border: 3px solid var(--primary); border-radius: 25px; z-index: 1;
+    transform: translate(-25px, -25px); transition: 0.4s;
+}
+.about-image-wrapper:hover::before { transform: translate(-15px, -15px); }
+
+/* Card Styling */
+.card, .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: 0.4s; height: 100%; position: relative; overflow: hidden;
+}
+
+.bg-pattern {
+    background-color: var(--bg-main);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+}
+
+.service-card:hover, .card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.icon-wrapper {
+    width: 70px; height: 70px; background: rgba(243, 112, 33, 0.1);
+    color: var(--primary); border-radius: 15px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; margin-bottom: 25px; transition: 0.5s;
+}
+.service-card:hover .icon-wrapper {
+    background: var(--primary); color: white;
+    border-radius: 50%; transform: rotateY(360deg);
+}
+
+/* Visi Misi Box */
+.border-primary { border-color: var(--primary) !important; }
+.bg-light { background-color: var(--bg-card) !important; }
+
+/* =========================================
+   5. FOOTER (PERBAIKAN JARAK GARIS)
+   ========================================= */
+.footer-premium {
+    background: var(--bg-surface); /* Serasi dengan Navbar */
+    color: var(--text-muted);
+    position: relative;
+    border-top: 1px solid var(--border-color);
+    padding-top: 80px;
+    margin-top: 50px; /* Jarak aman dari konten atas */
+}
+
+.footer-brand img { height: 40px; filter: brightness(0) invert(1); margin-bottom: 25px; }
+
+.footer-link {
+    color: #cccccc; text-decoration: none; margin-bottom: 12px; display: block;
+    transition: 0.3s;
+}
+.footer-link:hover { color: var(--primary); padding-left: 5px; }
+
+.contact-icon {
+    width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05);
+    color: var(--primary); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-right: 15px; transition: 0.3s;
+}
+.contact-item:hover .contact-icon { background: var(--primary); color: white; }
+
+/* PERBAIKAN GARIS MEPET */
+.footer-bottom {
+    background: #111111; /* Sedikit lebih gelap dari footer top */
+    padding: 30px 0;
+    margin-top: 60px; /* Memberi jarak agar garis tidak mepet dengan konten atas */
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color); /* Garis pemisah halus */
+}
+
+/* Floating WA */
+.float-wa-premium { position: fixed; bottom: 30px; right: 30px; z-index: 999; }
+.wa-btn-premium {
+    width: 60px; height: 60px;
+    background: linear-gradient(45deg, #25d366, #075e54);
+    color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+    transition: 0.3s; text-decoration: none;
+}
+.wa-btn-premium:hover { transform: scale(1.1); color: white; }
+
+/* =========================================
+   6. RESPONSIVE
+   ========================================= */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: var(--bg-card); padding: 20px;
+        border-radius: 15px; margin-top: 15px;
+        border: 1px solid var(--border-color);
+    }
+    .hero h1 { font-size: 2.8rem; }
+    .hero { text-align: center; padding-top: 120px; }
+    .hero .d-flex { flex-direction: column; gap: 15px; }
+    .btn-gradient, .btn-outline-light { width: 100%; }
+    .footer-top { text-align: center; }
+    .footer-brand, .contact-item { justify-content: center !important; }
+}
