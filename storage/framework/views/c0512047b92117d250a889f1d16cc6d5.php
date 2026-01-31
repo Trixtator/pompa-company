@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\pompa-company\resources\views/admin/settings/index.blade.php ENDPATH**/ ?>
